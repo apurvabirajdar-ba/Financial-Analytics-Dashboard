@@ -22,7 +22,8 @@ export const LoginPage = ({ onSuccess }: { onSuccess: () => void }) => {
         ? { username, email, password }
         : { email, password };
 
-      const res = await axios.post(`http://localhost:5001${endpoint}`, payload);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const res = await axios.post(`${apiUrl}${endpoint}`, payload);
 
       if (isRegister) {
         setIsRegister(false);

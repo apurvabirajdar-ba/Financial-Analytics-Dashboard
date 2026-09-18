@@ -9,7 +9,11 @@ import exportRoutes from './routes/export';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://financial-analytics-dashboard.vercel.app', /\.vercel\.app$/]
+    : '*'
+}));
 app.use(express.json());
 
 // Connect DB and seed

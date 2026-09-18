@@ -1,5 +1,5 @@
 import { Transaction } from '../models/Transaction';
-import transactions from '../../transactions.json';
+import transactions from '../transactions.json';
 
 export const seedDatabase = async () => {
   const count = await Transaction.countDocuments();
