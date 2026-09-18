@@ -1,0 +1,5 @@
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+
+type ChartPoint = { month: string; revenue: number; expenses: number };
+
+export const TrendChart = ({ data }: { data: ChartPoint[] }) => <ResponsiveContainer width="100%" height={195}><LineChart data={data} margin={{ top: 16, right: 8, left: -15, bottom: 0 }}><CartesianGrid stroke="#323843" strokeDasharray="2 4" vertical={false} /><XAxis dataKey="month" stroke="#838998" tickLine={false} axisLine={false} tick={{ fontSize: 8 }} /><YAxis stroke="#838998" tickLine={false} axisLine={false} tick={{ fontSize: 8 }} width={43} tickFormatter={(value) => `₹${Math.round(value / 1000)}k`} /><Tooltip cursor={{ stroke: '#00df6060', strokeWidth: 1 }} contentStyle={{ background: '#1d222b', border: '1px solid #3a414e', borderRadius: 5, fontSize: 10 }} /><Line type="monotone" dataKey="revenue" stroke="#00df60" strokeWidth={2} dot={false} activeDot={{ r: 4 }} /><Line type="monotone" dataKey="expenses" stroke="#edc413" strokeWidth={2} dot={false} activeDot={{ r: 4 }} /></LineChart></ResponsiveContainer>;
